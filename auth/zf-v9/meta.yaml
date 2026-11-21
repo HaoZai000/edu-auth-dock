@@ -1,0 +1,22 @@
+# 正方教务 V9
+# ⚠ 尚未实测，login.js 是待补骨架。别标 verified: true。
+
+auth_id: "zf-v9"
+auth_name: "正方教务 V9"
+asset_js_path: "login.js"
+captcha: "unknown"
+verified: false
+maintainer: "Nexio课程表"
+
+match:
+  url_contains: ["jwglxt/xtgl/login_slogin.html", "jwglxt/xtgl/login"]
+  dom_has: ["#username", "#password"]
+  title_contains: ["统一身份认证", "正方"]
+
+notes: |
+  - 登录页在 jwglxt/xtgl/login_slogin.html，与经典版完全不是一套。
+  - 部分学校在这里还套了统一身份认证（CAS/OAuth），登录地址会跳到 auth.*.edu.cn。
+    那种情况不要在本脚本里处理，应该单独做一个 cas-sso 登录器。
+  - 密码可能被页面 JS 用 RSA 公钥加密后再提交（公钥从 /jwglxt/xtgl/login_getPublicKey.html 取）。
+    注意：**在页面里点按钮提交会让页面自己完成加密**，不要自己拼请求。
+  - 待办：找一所 V9 学校实测，把 selector 和成功判定补全。

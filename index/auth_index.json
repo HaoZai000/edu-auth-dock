@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "updated_at": "2026-11-21",
+  "comment": "客户端只读这份索引。auth/*/meta.yaml 是人读的说明，两者必须一致（跑 scripts/check_index.js 校验）。",
+  "auths": [
+    {
+      "auth_id": "zf-classic",
+      "auth_name": "正方教务（经典版）",
+      "asset_js_path": "auth/zf-classic/login.js",
+      "captcha": "image",
+      "verified": true,
+      "match": {
+        "url_contains": ["default2.aspx", "default.aspx"],
+        "dom_has": ["#txtUserName", "#TextBox2"],
+        "title_contains": ["正方教务"]
+      }
+    },
+    {
+      "auth_id": "zf-v9",
+      "auth_name": "正方教务 V9",
+      "asset_js_path": "auth/zf-v9/login.js",
+      "captcha": "unknown",
+      "verified": false,
+      "match": {
+        "url_contains": ["jwglxt/xtgl/login_slogin.html", "jwglxt/xtgl/login"],
+        "dom_has": ["#username", "#password"],
+        "title_contains": ["统一身份认证", "正方"]
+      }
+    },
+    {
+      "auth_id": "qz-default",
+      "auth_name": "强智科技教务",
+      "asset_js_path": "auth/qz-default/login.js",
+      "captcha": "image",
+      "verified": false,
+      "match": {
+        "url_contains": ["loginToXk", "/jsxsd/"],
+        "dom_has": ["#yhm", "#mm"],
+        "title_contains": ["强智", "教学一体化"]
+      }
+    }
+  ]
+}
